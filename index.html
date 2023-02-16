@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+    <script type="text/javascript" charset="utf-8">     
+        function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),   
+        results = regex.exec(location.search); 
+        return results === null ? "" :   
+        decodeURIComponent(results[1].replace(/\+/g, " "));
+      }     
+      var clickTAG = getParameterByName("clickTAG"); 
+     </script> 
+     
+        <link rel="preconnect" href="https://fonts.gstatic.com/">
+		<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+        <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+            body {
+                margin: 0;
+                font-family: 'Roboto', sans-serif !important;
+                background-color: hsl(0, 0%, 90%);
+                background-image: -webkit-image-set(        
+                url(media/background.png) 2x  );  
+                background-repeat: no-repeat;
+                width: 300px !important;;
+                height: 600px !important;
+                
+            }
+            .frames {
+                width: 300px;
+                height: 600px;
+                
+                position: relative;
+            }
+            /* .frame__body{
+            	padding-left: 5px;
+            	padding-right: 5px;
+            } */
+            .frame {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition-duration: .35s;
+                background-image: -webkit-image-set(        
+                url(media/background.png) 2x  );  
+                background-repeat: no-repeat;
+                width: 300px !important;;
+                height: 600px !important;
+            }
+            .frame__header {
+                text-align: center;
+                height: 43px;
+            }
+
+            .quiz, .result {
+				
+				text-align: center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				height: auto!important;
+			}
+
+            .result {
+                visibility: hidden;
+            }
+			.choices{
+                cursor: pointer !important;
+                margin: 0;
+                top: 254px !important;
+            	color: transparent;
+                width: 300px;
+            	height: auto;
+			}
+			.choice {
+				margin: 0;
+				color: auto;
+				width: 70px;
+				height: auto;
+
+			}
+			.choices img, .choice img {
+                margin: 0;
+				height: auto;
+				width: 300px;
+			}
+           .percent{
+           	font-size: 18px !important;
+           }
+            
+            .form {
+                top: 345px;
+                position: absolute;
+                height: 38px;
+                transition-duration: .35s;
+				bottom: 0;
+                background-color: transparent;
+            }
+            .form__row-one {
+                display: flex;
+                padding-left: 0px;
+            }
+            .form__email {
+                width: 70%;
+                height: 36px;
+                background-color: white;
+            }
+            .form__email__label {
+                display: block;
+                font-size: 9px;
+                padding-left: 4px;
+                line-height: 10px;
+                transition-duration: .35s;
+                color: rgb(94, 94, 94);
+            }
+            .full-size-label {
+                font-size: 12px;
+                line-height: 38px;
+                color: rgb(24, 47, 110);
+                cursor: pointer;
+                
+            }
+            .form__email__input {
+                font-size: 16px;
+                line-height: 20px;
+                padding: 0;
+                border: 0;
+                outline: 0;
+                display: block;
+                font-weight: 400;
+                width: 100%;
+                height: 20px;
+                transition-duration: .35s;
+                color: rgb(24, 47, 110);
+            }
+            .hide-input {
+                height: 0px;
+            }
+            .form__email__submit {    
+                background-color: #b9e4e9;
+                color: #4b4d4e;
+                text-transform: capitalize;
+                border: none;
+                width: 35%;
+                height: 36px;
+                font-weight: 700;
+                font-size: 16px;
+                padding: 0 12px;
+                outline: none;
+                cursor: pointer;
+            }
+            .form__row-two {
+                height: 0;
+                overflow: hidden;
+                transition-duration: .35s;
+                font-size: 11px !important;
+                line-height: 22px;
+            }
+            .display-row-two {
+                height: 95px;
+                background-color: white;
+            }
+            .form__row-two div {
+                padding: 6px 12px;
+            }
+        
+            .display-form {
+                top:345px;
+                height: 143px;
+            }
+
+            /* DISCLAIMER LINKS */
+            /* .form a:link, :hover, :active, :visited {
+            color: #b9e4e9;
+            } */
+  
+
+            .learnmore {
+                text-align: center;
+                background-color: #b9e4e9;
+                color: #4b4d4e;
+                text-transform: capitalize;
+                border: none;
+                font-weight: 500;
+                font-family: 'Roboto', sans-serif !important;
+                font-size: 14px;
+                padding: 10px;
+                outline: none;
+                cursor: pointer;
+                top: 348px;
+                margin-top: 5px;
+            }
+	
+        </style>
+    </head>
+    <body data-new-gr-c-s-check-loaded="14.995.0" data-gr-ext-installed="">
+        <div class="frames">
+            <div id="frame_0" class="frame">
+            	<div class = "frame__header">
+            		<!-- <img  class = "logo__image" src = "media/Logos-Gillette.png" width="111px" height="33px"> -->
+            	</div>
+            	<div class ="frame__body">
+					<image src = media/headline1.png style="width: 300px;"></image> 
+                <div class = "quiz">
+                <div class="choices" onclick="optionChoosen('potRoast');">
+                	<img src = "media/meal1.png">
+                </div>
+                <div class="choices" onclick="optionChoosen('grilledChicken');">
+                	<img src = "media/meal2.png">
+                </div>
+                <div class="choices" onclick="optionChoosen('mandarinChicken');">
+                	<img src = "media/meal3.png">
+                </div>
+               
+            	</div>
+            	<input type="hidden" id="choosenOption">
+           		</div>
+            </div>
+            <div id="frame1" class="frame" style="top: -600px;">
+            	<div class = "frame__header">
+                    <image src = media/headline2.png style="width: 300px;"></image> 
+            	</div>
+            	<div class="frame__body">
+                    <!-- HIDDEN RESULTS -->
+            		<div class = "result">
+                		<div class="choice">
+                			<p class="percent" id="potRoast"></p>
+                		</div>
+                		<div class="choice">
+                			<p class="percent" id="grilledChicken"></p>
+                		   	
+                		</div>
+                		<div class="choice">
+                			<p class="percent" id="mandarinChicken"></p>
+                			
+                		</div>
+                		<div class="choice">
+                			<p class="percent" id="snickerdoodle"></p>
+                			
+                		</div>
+            		</div>
+
+                     <!-- ^^^^^ HIDDEN RESULTS ^^^^ -->
+
+                    
+
+                </div>
+                <form name="form" class="form" style="padding-right: 5px; padding-left: 5px; bottom: 40px;">
+                    <div class="form__row-one">
+                        <div class="form__email">
+                            <label id="label" onclick="toggleLabel();" class="form__email__label full-size-label" for="email">
+                                Email
+                            </label>
+                            <input id="email" onkeyup="validate();" class="form__email__input hide-input" type="email" name="email" style="padding-left: 5px;">
+                        </div>
+                        <button id="submitButton" onclick="submitForm(event);" class="form__email__submit" type="submit">Get Offer</button>
+                    </div>
+					  <div id="row-two" class="form__row-two">
+                    <div style="background-color: #d12131; color: white;">
+                        By proceeding, I agree to receive emails from Schwan's Home Delivery. Click to read <a target="_blank" style="color: #b9e4e9;
+                            href="https://www.schwans.com/policies/terms-and-conditions">Schwan's Home Delivery Terms & Conditions</a> and <a target="_blank" style="color: #b9e4e9;"
+                            href="https://www.schwans.com/policies/privacy-policy">Schwan's Home Delivery Privacy Policy</a>. This offer is for new customers only.
+                     
+                    </div>
+                </div>
+                </form>
+            </div>
+			
+			<a href="javascript:window.open(window.clickTAG);void(0);" style="text-decoration: none;">  
+           <div id="frame2" class="frame" style="top: -600px;">
+           	<div class = "frame__header">
+                <image src = media/headline3.png style="width: 300px;"></image> 
+                <button id="#" class="learnmore">Redeem Now</button>
+            	</div>
+                        
+                    
+                    </div>
+            </div>
+			</a>
+			
+        </div>
+        <script src="sha256.min.js"></script>
+		
+        <script>
+
+            let emailLabel = window.document.getElementById('label');
+            let emailInput = window.document.getElementById('email');
+            let choosenOption = window.document.getElementById('choosenOption').value;
+            let sourceId = 13428;
+
+            let error = false;
+            let re = new RegExp('^.+@.+\\..+$', 'g');
+
+            function saveUser(choosenOption) {
+                    let emailInput = window.document.getElementById('email');
+                    //let _oldURL = 'https://api-dot-widget-testing.uc.r.appspot.com/isEmailSubmitted';
+                    fetch('https://app.appsdashboard.xyz/api/option/userSchwan', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                campaign: "5ee24bbe9ecceb2c3857eae6", // general
+                                regularId: "60689b344bff833959a9c3c7", // regular Bank
+                                choosenOption: choosenOption,
+                                size: 'size300x250',
+                                isEmailSubmitted: 1,
+                                email: 'kk@gmail.com',//emailInput.value,
+                                date: new Date()
+                            })
+                        })
+                        .then((response) => {
+                            if (response.status !== 200) {
+                                throw Error();
+                            }
+                            console.log('isEmailSubmitted success', JSON.stringify(response))
+                            return response.json()
+                        })
+            }
+
+
+            function submitForm(e) {
+
+                e.preventDefault();
+                let choosenOption = window.document.getElementById('choosenOption').value;
+                let result = emailInput.value.match(re);
+                console.log('result', result)
+			
+                if (result !== null) {
+				
+                    handleResponse(false);
+                    let responysLoginResponse = loginToResponsys(choosenOption);
+                    let savedUser = saveUser(choosenOption);
+                    //let sengmentResponse = sendToSegment();
+                    //let sengmentTrackAPIResponse = sendToSegmentTrackAPI();
+
+                } else {
+                    emailLabel.style.color = '#FF0000';
+                    error = true;
+                }
+                
+            }
+
+            let success = window.document.getElementById('success');
+
+            function loginToResponsys(choosenOption)
+            {
+                let emailInput = window.document.getElementById('email');
+                let userId = Math.floor(Math.random() * 1000000);//getUserId();
+                fetch('https://app.appsdashboard.xyz/api/option/saveInResponsys', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            "requestData": {
+                                    "recordData": {
+                                    "fieldNames": [
+                                    "email_address_"
+                                    ],
+                                    "records": [
+                                    [
+                                        emailInput.value
+                                    ]
+                                    ],
+                                    "mapTemplateName": null
+                                },
+                                    "mergeRule": {
+                                        "htmlValue": "H",
+                                        "optinValue": "I",
+                                        "textValue": "T",
+                                        "insertOnNoMatch": true,
+                                        "updateOnMatch": "NO_UPDATE",
+                                        "matchColumnName1": "EMAIL_ADDRESS_",
+                                        "matchColumnName2": null,
+                                        "matchOperator": "NONE",
+                                        "optoutValue": "O",
+                                        "rejectRecordIfChannelEmpty": null,
+                                        "defaultPermissionStatus": "OPTIN"
+                                    }
+                                },
+                                "customEventRequest": {
+                                    "customEvent": {
+                                        "eventNumberDataMapping": null,
+                                        "eventDateDataMapping": null,
+                                        "eventStringDataMapping": null
+                                    },
+                                    "recipientData": [
+                                        {
+                                        "recipient": {
+                                            "customerId": null,
+                                            "emailAddress": emailInput.value,
+                                            "listName": {
+                                            "folderName": "!MasterData",
+                                            "objectName": "CONTACTS_LIST"
+                                            },
+                                            "recipientId": null,
+                                            "mobileNumber": null,
+                                            "emailFormat": "HTML_FORMAT"
+                                        },
+                                        "optionalData": [
+                                            {
+                                            "name": "CATEGORY",
+                                            "value": choosenOption
+                                            }
+                                        ]
+                                        }
+                                    ]
+                                }
+                                
+                            }
+                        )
+                    }
+                )
+                .then((response) => {
+                    if (response.status !== 200) {
+                        throw Error();
+                    }
+                    return response.json()
+                })
+            }
+
+            function castCampaignVote(choosenOption) {
+            console.log('wiko');
+            //let oldURL = 'https://api-dot-widget-testing.uc.r.appspot.com/campaignVoteSubmit';
+            fetch('https://app.appsdashboard.xyz/api/option/storeSchwan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: "5ee24bbe9ecceb2c3857eae6", // general
+                        regularId: "60689b344bff833959a9c3c7", // regular Bank
+                        size: 'size300x250',
+                        choosenOption: choosenOption
+                    })
+                })
+                .then((response) => {
+                    if (response.status !== 200) {
+                        throw Error();
+                    }
+                    console.log('castCampaignVote success', JSON.stringify(response))
+                    return response.json()
+                })
+                .then(
+                    (result) => {
+                        let votes = result.votes;
+                        console.log('submitEmail votes 1', JSON.stringify(votes))
+
+
+                        let potRoast = votes.find(vt => vt._id == "potRoast");
+
+                        let grilledChicken = votes.find(vt => vt._id == "grilledChicken");
+
+                        let mandarinChicken = votes.find(vt => vt._id == "mandarinChicken");
+
+                        let snickerdoodle = votes.find(vt => vt._id == "snickerdoodle");
+                        // => {name: "Albania", code: "AL"}
+
+                        window.document.getElementById('potRoast').innerHTML = (potRoast ? (Math
+                            .round((potRoast.count / result.totalVotes) * 100)) : 0) + '%'
+
+                        window.document.getElementById('grilledChicken').innerHTML = (grilledChicken ? (Math.round((
+                            grilledChicken.count / result.totalVotes) * 100)) : 0) + '%'
+
+                        window.document.getElementById('mandarinChicken').innerHTML = (mandarinChicken ? (Math
+                            .round((mandarinChicken.count / result.totalVotes) * 100)) : 0) + '%'
+
+                        window.document.getElementById('snickerdoodle').innerHTML = (snickerdoodle ? (Math.round((
+                            snickerdoodle.count / result.totalVotes) * 100)) : 0) + '%'
+
+                        if (result.succeeded) {
+                            // Show success screen
+                            //success.className = 'success';
+                            //video.pause();
+                            window.document.getElementById('frame2').style.top = 0;
+                        } else {
+                            // Show error message
+                        }
+
+                    },
+                    (error) => {
+                        // Show error message
+                    }
+                )
+            }
+
+            function handleResponse(bypass) {
+                console.log('handleResponse called')
+                if (bypass) {
+                    console.log('fetch was bypassed.')
+                    // Show success screen
+                    success.className = 'success';
+                    video.pause();
+                    return;
+                }
+                window.document.getElementById('frame2').style.top = 0;
+            }
+
+            function getUserId() {
+                let enteredEmail = emailInput.value;
+                let userId = '119_'+ sourceId +'_'+sha256(enteredEmail.toLowerCase()); 
+                    console.log('userId', userId)
+                    // var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    // var result = '';
+                    // for ( var i = 0; i < length; i++ ) {
+                    //     result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+                    // }
+                    return userId;
+            }
+
+            function sendToSegment()
+            {
+                let choosenOption = window.document.getElementById('choosenOption').value;
+                console.log('choosenOption', choosenOption)
+                let now = new Date();
+                let formattedDate = [
+                    now.getFullYear(),
+                    '-',
+                    now.getMonth() + 1,
+                    '-',
+                    now.getDate(),
+                    ' ',
+                    now.getHours(),
+                    ':',
+                    now.getMinutes(),
+                    ':',
+                    now.getSeconds()
+                ].join('');
+
+                let uniqueUserId = getUserId();
+                let enteredEmail = emailInput.value;
+                
+                fetch('https://api.segment.io/v1/identify',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                           // 'Authorization': 'Basic eDl5ekk3SnJyVzZkMFFUVkFXOEZFT3RRblRUQ0ZvMDM=' // QA 
+                         'Authorization': 'Basic UzNPa1ljaUxjRFFWMENSNGlNNU9qQ1JOZzZ1RTdVQ1c=' // Dev
+                             // 'Authorization': 'Basic ajRTeUVCSnc1UHU5OGFERXZjT2VCNUhjRkZYakFaYk0=' // Live
+                        },
+                        body: JSON.stringify({
+                            "context": {
+                                        "externalIds": [
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": "13428",
+                                            "type": "sourceId"
+                                        },
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": "119",
+                                            "type": "marketingProgramNumber"
+                                        },
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": sha256(enteredEmail.toLowerCase()),
+                                            "type": "email"
+                                        },
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": "USA",
+                                            "type": "countryCode"
+                                        }
+                                    ],
+                            },
+                            userId: uniqueUserId,
+                            traits: {
+                                email: enteredEmail.toLowerCase(),
+                                emailSha256Hash: sha256(enteredEmail.toLowerCase()),
+                                marketingProgramNumber: "119",
+                                registrationDate: now,
+                                sourceId: "13428",
+								  traitLookingForFromGillette: "coupon",
+                                traitLookingForFromGilletteIdValue : choosenOption,
+								  
+								//traitHowConcernedWithEnviroSustainabilityIdValue: choosenOption,
+                            },
+                           // timestamp: formattedDate
+                        })
+                    }
+                )
+                .then((response) => {
+                    if (response.status !== 200) {
+                        throw Error();
+                    }
+                    return response.json()
+                })
+            }
+
+            function sendToSegmentTrackAPI()
+            {
+                let choosenOption = window.document.getElementById('choosenOption').value;
+                console.log('choosenOption', choosenOption)
+                let now = new Date();
+                let formattedDate = [
+                    now.getFullYear(),
+                    '-',
+                    now.getMonth() + 1,
+                    '-',
+                    now.getDate(),
+                    ' ',
+                    now.getHours(),
+                    ':',
+                    now.getMinutes(),
+                    ':',
+                    now.getSeconds()
+                ].join('');
+
+                let uniqueUserId = getUserId();
+                let enteredEmail = emailInput.value;
+                fetch('https://api.segment.io/v1/track',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                           //'Authorization': 'Basic eDl5ekk3SnJyVzZkMFFUVkFXOEZFT3RRblRUQ0ZvMDM=' // QA 
+                          'Authorization': 'Basic UzNPa1ljaUxjRFFWMENSNGlNNU9qQ1JOZzZ1RTdVQ1c=' // Dev
+                               //'Authorization': 'Basic ajRTeUVCSnc1UHU5OGFERXZjT2VCNUhjRkZYakFaYk0=' // Live
+                        },
+                        body: JSON.stringify({
+                            "context": {
+                                        "externalIds": [
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": "13428",
+                                            "type": "sourceId"
+                                        },
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": "119",
+                                            "type": "marketingProgramNumber"
+                                        },
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": sha256(enteredEmail.toLowerCase()),
+                                            "type": "email"
+                                        },
+                                        {
+                                            "collection": "users",
+                                            "encoding": "none",
+                                            "id": "USA",
+                                            "type": "countryCode"
+                                        }
+                                    ],
+                            },
+                            "event": "Changed Opt Status",
+                            userId: uniqueUserId,
+                            properties: {
+                                email: enteredEmail.toLowerCase(),
+                                emailConsumerChoiceDate: now,
+                                emailSha256Hash: sha256(enteredEmail.toLowerCase()),
+                                emailSubscriptionOptIndicator: "true",
+                                emailSubscriptionOptNumber: "10",
+                                emailSubscriptionServiceName: "On Demand",
+                                marketingProgramNumber: "119",
+                                optText: "By registering, I agree to receive emails from Gillette and other trusted <a href=\"https://us.pg.com/brands\" target=\"_blank\">P&G brands</a> and programs. Click to read <a href=\"https://www.pg.com/en_US/terms_conditions/index.shtml\" target=\"_blank\">P&G Terms and Conditions</a> and  <a href=\"https://www.pg.com/privacy/english/privacy_notice.shtml\" target=\"_blank\">P&G Privacy Policy </a>.",
+                            },
+                            //timestamp: formattedDate
+                        })
+                    }
+                )
+                .then((response) => {
+                    if (response.status !== 200) {
+                        throw Error();
+                    }
+                    return response.json()
+                })
+            }
+            
+            function validate() {
+                if (error) {
+                    let result = emailInput.value.match(re);
+                    if (result !== null) {
+                        emailLabel.removeAttribute('style');
+                        error = false;
+                    }
+                }
+            }
+
+            function optionChoosen(option) {
+                console.log('optionChoosen', option)
+                castCampaignVote(option);
+                window.document.getElementById('choosenOption').value = option;           
+                window.document.getElementById('frame1').style.top = 0;
+            }
+
+            let form = window.document.forms['form'];
+            let rowTwo = window.document.getElementById('row-two');
+ function toggleLabel() {
+            if (emailInput.value.length > 0) {
+                return;
+            }
+            if (emailLabel.className === 'form__email__label') {
+                emailLabel.className = 'form__email__label full-size-label';
+                emailInput.className = 'form__email__input hide-input';
+                form.className = 'form';
+                rowTwo.classList = 'form__row-two';
+            } else {
+                emailLabel.className = 'form__email__label';
+                emailInput.className = 'form__email__input';
+                form.className = 'form display-form';
+                rowTwo.classList = 'form__row-two display-row-two';
+                emailInput.focus();
+            }
+        }
+        </script>
+    
+</body></html>
